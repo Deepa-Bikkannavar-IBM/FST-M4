@@ -1,0 +1,7 @@
+$ vim txtFile.txt
+$ vim csvFile.csv 
+$ hdfs dfs -mkdir /user/root/deepa
+$ hdfs dfs -put ./csvFile.csv /user/root/deepa
+$ hdfs dfs -put ./csvFile.csv /user/root/deepa
+$ hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/deepa/csvFile.csv
+$ hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/deepa/txtFile.txt
