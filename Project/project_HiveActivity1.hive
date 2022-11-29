@@ -1,0 +1,9 @@
+hive> CREATE TABLE episodeIV(name STRING, line STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="2");
+hive> LOAD DATA LOCAL INPATH 'root/project/' INTO TABLE episodeIV;
+hive> SELECT name, count(name) AS no_of_lines from episodeIV GROUP BY name ORDER BY no_of_lines;
+
+hive> INSERT OVERWRITE DIRECTORY '/user/deepa/output/exportact1'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+  > SELECT name, count(name) AS no_of_lines from episodeIV GROUP BY name ORDER BY no_of_lines;
+
+hive> dfs -cat /user/deepa/output/exportact1/000000_0;
